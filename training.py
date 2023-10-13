@@ -28,7 +28,7 @@ def preprocess_data(df, feature_columns):
     return df, features_matrix, mlbs
 
 if __name__ == '__main__':
-    filename = "../anime_list.csv"
+    filename = "anime_list.csv"
     df = load_data(filename)
 
     feature_columns = ['genres', 'themes', 'studios', 'allRank']
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     cosine_sim = cosine_similarity(features_matrix)
 
     # Save the anime DataFrame and cosine similarity matrix
-    save_directory = "savedModel"
+    save_directory = "trainedModel/savedModel"
     df.to_pickle(os.path.join(save_directory, "anime_dataframe.pkl"))
     with open(os.path.join(save_directory, "cosine_similarity_matrix.pkl"), 'wb') as f:
         pickle.dump(cosine_sim, f)
